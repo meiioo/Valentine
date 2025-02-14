@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gift Valentine - Pin & Foto</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #ff758c, #ff7eb3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            width: 90%;
+            max-width: 500px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 20px;
+            animation: zoomIn 1.2s ease-out;
+        }
+
+        .pin-box {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            border-radius: 15px;
+            background: rgba(255, 64, 129, 0.1);
+            box-shadow: 0 5px 15px rgba(255, 64, 129, 0.3);
+            animation: pulse 1.5s infinite alternate;
+        }
+
+        .pin-circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: #ff4081;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 0 20px rgba(255, 64, 129, 0.7);
+            margin-bottom: 15px;
+        }
+
+        .pin-text {
+            font-size: 40px;
+            color: white;
+        }
+
+        .pin-code {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label {
+            font-weight: bold;
+            color: #ff4081;
+            margin-bottom: 5px;
+        }
+
+        input {
+            padding: 10px;
+            width: 80%;
+            font-size: 18px;
+            border-radius: 10px;
+            border: 2px solid #ff4081;
+            text-align: center;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        input:focus {
+            border-color: #ff005d;
+            box-shadow: 0 0 10px rgba(255, 0, 93, 0.5);
+        }
+
+        button {
+            background: #ff4081;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+            transition: 0.3s ease-in-out;
+            animation: bounce 1.5s infinite;
+        }
+
+        button:hover {
+            background: #d81b60;
+            transform: scale(1.1);
+        }
+
+        .image-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .image-container img {
+            width: 100%;
+            max-width: 200px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(255, 64, 129, 0.6);
+            animation: glow 2s infinite alternate, fadeIn 1.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes zoomIn {
+            0% { transform: scale(0.5); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.05); }
+        }
+
+        @keyframes glow {
+            0% { box-shadow: 0 0 10px rgba(255, 64, 129, 0.5); }
+            100% { box-shadow: 0 0 25px rgba(255, 255, 0, 0.8); }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        @media (max-width: 500px) {
+            .container {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Pin Section -->
+        <div class="pin-box">
+            <div class="pin-circle">
+                <span class="pin-text">🔐</span>
+            </div>
+            <div class="pin-code">
+                <label for="pin">Masukkan Pin Code:</label>
+                <input type="password" id="pin" placeholder="Enter 6-digit PIN" maxlength="6">
+                <button onclick="checkPin()">Masuk</button>
+            </div>
+        </div>
+
+        <!-- Foto Section -->
+        <div class="image-container">
+            <img id="side-image" src="gambar8.jpg" alt="Foto">
+        </div>
+    </div>
+
+    <script>
+        function checkPin() {
+            let pinInput = document.getElementById("pin").value;
+            let correctPin = "201204"; // Gantilah dengan PIN yang benar
+
+            if (pinInput === correctPin) {
+                window.location.href = "success.html"; // Ganti dengan halaman yang diinginkan
+            } else {
+                alert("PIN salah! Coba lagi 🔐");
+            }
+        }
+    </script>
+</body>
+</html>

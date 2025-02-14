@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Folder 2 </title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #ff758c, #ff7eb3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            text-align: center;
+            animation: fadeIn 1.5s ease-in-out;
+            overflow: hidden;
+        }
+
+        .container {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            max-width: 400px;
+            animation: bounceIn 1.5s ease-out;
+        }
+
+        h1 {
+            color: #ff4081;
+            margin-bottom: 15px;
+            font-size: 24px;
+            animation: slideIn 1.2s ease-out;
+        }
+
+        .quote-text {
+            font-size: 18px;
+            color: #fff;
+            font-style: italic;
+            padding: 15px;
+            background: rgba(255, 64, 129, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 350px;
+            margin: 0 auto;
+            transition: transform 0.3s ease-in-out;
+            animation: fadeInText 1.5s ease-in-out forwards;
+        }
+
+        .quote-text:hover {
+            transform: scale(1.05);
+        }
+
+        .back-btn {
+            background: #ff4081;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: 0.3s ease-in-out;
+            margin-top: 20px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .back-btn:hover {
+            background: #d81b60;
+            transform: scale(1.1);
+        }
+
+        /* Karakter GIF */
+        .character {
+            width: 140px;
+            position: absolute;
+            bottom: -150px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: characterAppear 2s ease-in-out forwards, floatAnimation 3s infinite ease-in-out;
+        }
+
+        /* Animasi Karakter Muncul */
+        @keyframes characterAppear {
+            0% { bottom: -150px; opacity: 0; }
+            100% { bottom: 30px; opacity: 1; }
+        }
+
+        /* Animasi Mengapung */
+        @keyframes floatAnimation {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-10px); }
+        }
+
+        /* Animasi Fade In */
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        /* Animasi Slide In */
+        @keyframes slideIn {
+            0% { transform: translateY(-50px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        /* Animasi Bounce */
+        @keyframes bounceIn {
+            0% { transform: scale(0.8); opacity: 0; }
+            50% { transform: scale(1.1); opacity: 0.5; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        /* Animasi teks masuk */
+        @keyframes fadeInText {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Happy Valentine Sayangkuu 💕</h1>
+        <p class="quote-text" id="quote">"TUKANG NGAMBEK DAN TUKAN MARAH NIH WKWK!"</p>
+        <br>
+        <button class="back-btn" onclick="history.back()">⬅ Back Sayang</button>
+    </div>
+
+    <!-- Karakter GIF -->
+    <img src="gifcat.gif" alt="Karakter Kartun" class="character">
+
+    <script>
+        // Daftar kata-kata spesial yang akan berganti secara otomatis
+        const quotes = [
+            "Tukang ngambek BACA INI YAA CMN SEBENTAR DOANG KO NGAK LAMA WKWK",
+            "Aku bersyukur bisa mengenalmu, kamu adalah anugerah terindah dalam hidupku.",
+            "Semoga cinta kita terus tumbuh dan berkembang seperti bunga yang selalu mekar.",
+            "Bersama denganmu, setiap detik terasa begitu berharga.",
+            "Aku ingin selalu menjadi alasan di balik senyummu setiap hari.",
+            "Kamu adalah cahaya di hari-hari gelapku, terima kasih telah hadir dalam hidupku.",
+            "Happy Valentine Sayangku Cintaku Duniaku Semestakuu wkwk"
+        ];
+
+        let quoteIndex = 0;
+        function changeQuote() {
+            const quoteElement = document.getElementById("quote");
+            quoteIndex = (quoteIndex + 1) % quotes.length;
+
+            // Efek animasi sebelum mengganti teks
+            quoteElement.style.opacity = "0";
+            setTimeout(() => {
+                quoteElement.innerText = quotes[quoteIndex];
+                quoteElement.style.opacity = "1";
+            }, 800);
+        }
+
+        // Ganti teks setiap 4 detik
+        setInterval(changeQuote, 4000);
+    </script>
+</body>
+</html>
